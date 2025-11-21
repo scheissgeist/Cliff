@@ -730,11 +730,27 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2.5rem;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .testimonial-card:hover {
     border-color: #dc2626;
     transform: translateY(-5px);
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #dc2626;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .testimonial-text {
@@ -744,6 +760,7 @@ body {
     margin-bottom: 2rem;
     font-weight: 300;
     font-style: italic;
+    text-align: left;
 }
 
 .testimonial-author {
