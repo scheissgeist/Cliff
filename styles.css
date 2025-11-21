@@ -718,6 +718,18 @@ body {
     background: #000000;
 }
 
+.testimonial-carousel-container {
+    position: relative;
+    margin-top: 4rem;
+    overflow: hidden;
+}
+
+.testimonial-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 0;
+}
+
 .testimonial-list {
     display: flex;
     flex-direction: column;
@@ -733,6 +745,32 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2.5rem;
     transition: all 0.3s ease;
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.carousel-btn {
+    background: #dc2626;
+    color: #ffffff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: #b91c1c;
+    transform: scale(1.1);
 }
 
 .testimonial-item:hover {
