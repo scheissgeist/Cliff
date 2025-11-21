@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vancouver Film Crew Workshop - Hands-On Training for Aspiring Pros</title>
+    <meta name="description" content="Unlock your film crew career with expert-led workshops in Vancouver. Camera ops, Steadicam, gimbals & more. Next event: Nov 15-16, 2025. Book now!">
+    <style>
+        /* Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background: #000; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: rgba(0,0,0,0.9); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        nav ul { display: flex; list-style: none; }
+        nav li { margin-left: 2rem; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; }
+        .cta-button { background: #ff4500; color: #fff; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
+
+        /* Hero Section */
+        .hero { height: 100vh; background: url('https://via.placeholder.com/1920x1080/000/fff?text=Film+Workshop+Action') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .hero .cta { background: #ff4500; color: #fff; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; font-size: 1.1rem; font-weight: bold; display: inline-block; }
+
+        /* Value Props Section */
+        .value-props { padding: 4rem 0; background: #111; color: #fff; }
+        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .value-item { text-align: center; }
+        .value-item img { width: 64px; height: 64px; margin-bottom: 1rem; } /* Replace with actual icons */
+        .value-item h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+        /* Upcoming Event */
+        .event { padding: 4rem 0; text-align: center; background: #000; color: #fff; }
+        .countdown { font-size: 2rem; margin: 1rem 0; color: #ff4500; }
+        .event-cta { background: #ff4500; color: #fff; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; font-size: 1.1rem; display: inline-block; margin-top: 1rem; }
+
+        /* Workshops Table */
+        .workshops { padding: 4rem 0; background: #111; color: #fff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #333; }
+        th { background: #000; }
+        .book-btn { background: #ff4500; color: #fff; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
+
+        /* Testimonials */
+        .testimonials { padding: 4rem 0; background: #000; color: #fff; text-align: center; }
+        .testimonial { max-width: 600px; margin: 0 auto 2rem; font-style: italic; }
+
+        /* Footer */
+        footer { background: #111; color: #fff; text-align: center; padding: 2rem 0; }
+        .newsletter { margin-bottom: 1rem; }
+        .newsletter input { padding: 0.5rem; margin-right: 0.5rem; }
+        .newsletter button { background: #ff4500; color: #fff; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            nav ul { flex-direction: column; }
+            nav li { margin: 0.5rem 0; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h2 style="color: #fff;">Vancouver Film Crew Workshop</h2>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#workshops">Workshops</a></li>
+                <li><a href="#about">About Cliff</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#book">Book Now</a></li>
+            </ul>
+            <a href="#book" class="cta-button">Reserve Spot</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Unlock Your Film Crew Dream</h1>
+            <p>Hands-On Training with Industry Pros | November 15-16, 2025 | Vancouver | From Beginner to Set-Ready in 2 Days</p>
+            <a href="#book" class="cta">Reserve Your Spot Now</a>
+        </div>
+    </section>
+
+    <section class="value-props container">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #fff;">Why Join Us?</h2>
+        <div class="value-grid">
+            <div class="value-item">
+                <img src="https://via.placeholder.com/64?text=Camera" alt="Expert-Led">
+                <h3>Expert-Led</h3>
+                <p>Train with Cliff Hokanson (25+ years, 100+ music videos)</p>
+            </div>
+            <div class="value-item">
+                <img src="https://via.placeholder.com/64?text=Gear" alt="Real Skills">
+                <h3>Real Skills</h3>
+                <p>Dolly, jib, gimbal—plus volunteer set access</p>
+            </div>
+            <div class="value-item">
+                <img src="https://via.placeholder.com/64?text=Rocket" alt="Career Boost">
+                <h3>Career Boost</h3>
+                <p>Join crew lists for paid gigs in BC's $3B film industry</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="workshops" class="event container">
+        <h2>Upcoming Event: Nov 15-16, 2025</h2>
+        <p>Limited Spots: Only 10 Left</p>
+        <div class="countdown" id="countdown">Days: 6 | Hours: 12 | Mins: 18</div> <!-- Update with JS countdown -->
+        <a href="#book" class="event-cta">Book Full Weekend ($225)</a>
+    </section>
+
+    <section class="workshops container">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #fff;">All Workshops</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Workshop</th>
+                    <th>Date/Time</th>
+                    <th>Skills Covered</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Camera Operator</td>
+                    <td>Sat Nov 15, 8:30AM-5PM</td>
+                    <td>Framing, dolly/jib shots</td>
+                    <td>$225 (full weekend)</td>
+                    <td><a href="#book" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>1st/2nd AC</td>
+                    <td>Sat Nov 15, 8:30AM-5PM</td>
+                    <td>Focus pulling, lens prep</td>
+                    <td>Included in full</td>
+                    <td><a href="#book" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>Steadicam/Gimbal</td>
+                    <td>Sun Nov 16, 9AM-5PM</td>
+                    <td>Balancing, smooth moves</td>
+                    <td>Included in full</td>
+                    <td><a href="#book" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>Music Video (Bonus)</td>
+                    <td>Sat Evening</td>
+                    <td>Shooting 100+ vids tips</td>
+                    <td>Free w/ full reg ($150 standalone)</td>
+                    <td><a href="#book" class="book-btn">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>Observer (Watch Only)</td>
+                    <td>Sat/Sun</td>
+                    <td>Passive learning</td>
+                    <td>$150/day or $225 both</td>
+                    <td><a href="#book" class="book-btn">Book Now</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="testimonials" class="testimonials container">
+        <h2 style="margin-bottom: 2rem;">What Students Say</h2>
+        <div class="testimonial">
+            "Landed my first AC gig post-workshop! 100% recommend." – Alex T.
+        </div>
+        <div class="testimonial">
+            "Cliff's tips changed my gimbal game. Real-world ready!" – Jordan L.
+        </div>
+        <!-- Add more or embed videos -->
+    </section>
+
+    <section id="book" style="padding: 4rem 0; background: #111; color: #fff; text-align: center;">
+        <div class="container">
+            <h2>Ready to Join the Crew?</h2>
+            <p>Fill out the form below or text 604-351-6945. Secure your spot with Stripe.</p>
+            <!-- Embed Calendly or simple form -->
+            <form style="max-width: 400px; margin: 2rem auto;">
+                <input type="text" placeholder="Full Name" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
+                <input type="email" placeholder="Email" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
+                <select style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
+                    <option>Full Weekend ($225)</option>
+                    <option>Observer ($150/day)</option>
+                </select><br>
+                <button type="submit" style="background: #ff4500; color: #fff; border: none; padding: 1rem 2rem; cursor: pointer;">Pay & Register</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="newsletter">
+                <h3>Get Workshop Alerts & Free Tips</h3>
+                <input type="email" placeholder="Your Email">
+                <button>Subscribe</button>
+            </div>
+            <p>&copy; 2025 Vancouver Film Crew Workshop. All rights reserved. | <a href="#" style="color: #ff4500;">Privacy</a></p>
+            <p>Follow us: <a href="https://facebook.com/filmcrewworkshop" style="color: #ff4500;">FB</a> | <a href="#" style="color: #ff4500;">IG</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Countdown (to Nov 15, 2025)
+        function updateCountdown() {
+            const eventDate = new Date('2025-11-15T00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('countdown').textContent = `Days: ${days} | Hours: ${hours} | Mins: ${mins}`;
+        }
+        setInterval(updateCountdown, 60000); // Update every minute
+        updateCountdown();
+    </script>
+</body>
+</html>

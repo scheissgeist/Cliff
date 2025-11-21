@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Crew Workshop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation (Removed Bio and Blog) -->
+    <header class="header">
+        <div class="logo">Film Crew Workshop</div>
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a>
+                    <ul class="dropdown">
+                        <li><a href="#camera-operator">Camera Operator</a></li>
+                        <li><a href="#steadicam">Steadicam Operator</a></li>
+                        <li><a href="#gimbal">Gimbal Operator</a></li>
+                        <li><a href="#assistant">Camera Assistant</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#register" class="cta">Register Now</a></li>
+            </ul>
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (With video background for cinematic feel) -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop>
+            <source src="placeholder-hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Master Camera Skills for the Film Industry</h1>
+            <p>Hands-On Workshops in Vancouver – From Beginner to Pro + Free Bonus Shoots</p>
+            <a href="#register" class="cta">View Upcoming Dates</a>
+            <a href="placeholder-demo-video.mp4" class="cta">Watch Demo Video</a>
+        </div>
+    </section>
+
+    <!-- Featured Courses (Improved text for better readability and appeal) -->
+    <section class="courses" id="courses">
+        <h2>Featured Courses</h2>
+        <div class="course-grid">
+            <div class="course-card" id="camera-operator">
+                <img src="placeholder-camera.jpg" alt="Camera Operator Workshop">
+                <div class="course-details">
+                    <h3>Camera Operator Workshop</h3>
+                    <p>Dive into essential skills like dolly shots, precise blocking, and real-world on-set techniques in this immersive 2-day intensive designed for aspiring film professionals.</p>
+                    <a href="#register" class="cta">Enroll Now</a>
+                </div>
+            </div>
+            <div class="course-card" id="steadicam">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/09DKxLBiXno" title="Steadicam Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="course-details">
+                    <h3>Steadicam Operator</h3>
+                    <p>Achieve perfect balance and capture fluid, professional motion with high-end gear in our hands-on Steadicam training, perfect for elevating your cinematography game.</p>
+                    <a href="#register" class="cta">Enroll Now</a>
+                </div>
+            </div>
+            <div class="course-card" id="gimbal">
+                <img src="placeholder-gimbal.jpg" alt="Gimbal Operator Workshop">
+                <div class="course-details">
+                    <h3>Gimbal Operator</h3>
+                    <p>Master smooth, dynamic shots using the latest gimbal technology, with practical exercises that prepare you for fast-paced film and video productions.</p>
+                    <a href="#register" class="cta">Enroll Now</a>
+                </div>
+            </div>
+            <div class="course-card" id="assistant">
+                <img src="placeholder-assistant.jpg" alt="Camera Assistant Workshop">
+                <div class="course-details">
+                    <h3>Camera Assistant Workshop</h3>
+                    <p>Learn the crucial support roles on set, including gear setup, focus pulling, and collaboration with operators, in this foundational course for film crew careers.</p>
+                    <a href="#register" class="cta">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (With infinite looping carousel) -->
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Students Say</h2>
+        <div class="text-carousel">
+            <div class="carousel-slides">
+                <div class="carousel-slide">
+                    <p>"This workshop landed me my first music video gig!"</p>
+                    <cite>- Alumni Name <a href="https://instagram.com" target="_blank">@filmcrewworkshop</a></cite>
+                </div>
+                <div class="carousel-slide">
+                    <p>"Amazing hands-on experience with top-notch instructors."</p>
+                    <cite>- Another Alumni</cite>
+                </div>
+                <div class="carousel-slide">
+                    <p>"Transformed my skills – highly recommend!"</p>
+                    <cite>- Student Testimonial</cite>
+                </div>
+                <!-- Duplicate the first slide for seamless transition -->
+                <div class="carousel-slide">
+                    <p>"This workshop landed me my first music video gig!"</p>
+                    <cite>- Alumni Name <a href="https://instagram.com" target="_blank">@filmcrewworkshop</a></cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery (Responsive grid) -->
+    <section class="gallery" id="gallery">
+        <h2>Gallery from Past Sessions</h2>
+        <div class="gallery-grid">
+            <img src="placeholder-gallery1.jpg" alt="Workshop Session 1">
+            <img src="placeholder-gallery2.jpg" alt="Workshop Session 2">
+            <img src="placeholder-gallery3.jpg" alt="Workshop Session 3">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="cta">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact: <a href="tel:604-351-6945">604-351-6945</a> | <a href="mailto:info@filmcrewworkshop.com">info@filmcrewworkshop.com</a></p>
+        <div class="social">
+            <a href="https://instagram.com/filmcrewworkshop" target="_blank">Instagram</a>
+        </div>
+        <p>&copy; 2025 Film Crew Workshop</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
