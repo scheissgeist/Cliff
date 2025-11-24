@@ -213,24 +213,50 @@
         <div class="container">
             <h2>PAST WORKSHOPS</h2>
             <div class="gallery-grid">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-9344.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-9283.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-7514.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6521.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6529.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6213.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6525.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-9318-copy.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6523.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6520.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6524.jpg" alt="Workshop">
-                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-2152.jpeg" alt="Workshop">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-9344.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-9283.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-7514.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6521.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6529.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6213.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6525.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-9318-copy.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6523.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6520.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-6524.jpg" alt="Workshop" onclick="openLightbox(this.src)">
+                <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-2152.jpeg" alt="Workshop" onclick="openLightbox(this.src)">
             </div>
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="gallery.html" style="color: #dc2626; text-decoration: underline;">View Full Gallery</a>
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); cursor: pointer;" onclick="closeLightbox()">
+        <span style="position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+        <img id="lightbox-img" style="margin: auto; display: block; max-width: 90%; max-height: 90%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = src;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 
     <!-- Footer -->
     <footer>
