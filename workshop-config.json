@@ -1,0 +1,138 @@
+{
+  "workshops": {
+    "camera-operator": {
+      "id": "camera-operator",
+      "name": "Camera Operator Workshop",
+      "date": "Saturday, November 15, 2025",
+      "time": "8:30am - 5:00pm",
+      "price": 45000,
+      "regularPrice": 60000,
+      "discount": 25,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/whatsapp-image-2024-05-31-at-9-23-49-am_orig.jpeg",
+      "description": "Learn to become a Camera Operator skills tips blocking to operating the camera. Hand Held/Dolly/Sliders/Jib Arm and Wheel Remote Heads will be learned.",
+      "features": [
+        "Hand held, dolly, sliders, and jib arm operating",
+        "Remote head camera control",
+        "Professional framing and blocking techniques",
+        "Real production scenarios and set experience",
+        "Work with professional ARRI & RED cameras"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "steadicam": {
+      "id": "steadicam",
+      "name": "Steadicam Operator Workshop",
+      "date": "Sunday, November 16, 2025",
+      "time": "9:00am - 5:00pm",
+      "price": 45000,
+      "regularPrice": 60000,
+      "discount": 25,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-2142_1_orig.jpg",
+      "description": "Learn to operate, build and balance a Steadicam. Learn specialized skills, tips and more from an experienced professional, as well as valuable hands-on experience.",
+      "features": [
+        "Operate, build, and balance professional Steadicam rigs",
+        "Learn specialized skills and tips from experienced professionals",
+        "Advanced movement and stabilization techniques",
+        "Industry insider tips for professional work",
+        "Valuable hands-on experience with pro equipment"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "gimbal": {
+      "id": "gimbal",
+      "name": "Gimbal Operator Workshop",
+      "date": "Sunday, November 16, 2025",
+      "time": "9:00am - 5:00pm",
+      "price": 45000,
+      "regularPrice": 60000,
+      "discount": 25,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/s598718227892659146_p9_i19_w1536.jpeg",
+      "description": "Professional and prosumer gimbals everything from the new Ronin RS3 to the professional Movi Pro. GIMBALS will be mounted on Steadicam arms and Jib Arms.",
+      "features": [
+        "Professional and prosumer gimbals from Ronin RS3 to Movi Pro",
+        "Gimbals mounted on Steadicam arms and Jib Arms",
+        "Master smooth, dynamic shots and advanced techniques",
+        "Latest gimbal technology and real-world applications",
+        "Work with industry-standard equipment"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "1st-ac": {
+      "id": "1st-ac",
+      "name": "1st Camera Assistant Workshop",
+      "date": "Saturday & Sunday, November 15-16, 2025",
+      "time": "Full Weekend",
+      "price": 60000,
+      "regularPrice": 80000,
+      "discount": 25,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-5267_orig.jpg",
+      "description": "Learn to become a 1st Camera Assistant (focus pulling skills). Learn about lenses and the workings of the camera department on Saturday with additional assisting with Steadicam on Sunday.",
+      "features": [
+        "Focus pulling mastery and professional techniques",
+        "Comprehensive lens knowledge and characteristics",
+        "Camera department workflow and protocols",
+        "Saturday camera operating + Sunday Steadicam assisting",
+        "Essential skills for professional AC work"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "2nd-ac": {
+      "id": "2nd-ac",
+      "name": "2nd Camera Assistant Workshop",
+      "date": "Saturday & Sunday, November 15-16, 2025",
+      "time": "Full Weekend",
+      "price": 60000,
+      "regularPrice": 80000,
+      "discount": 25,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/whatsapp-image-2024-05-31-at-9-23-54-am_orig.jpeg",
+      "description": "Learn to become a 2nd Camera Assistant (clapper loader). Learn about lenses and the workings of the camera department on Saturday with an additional day assisting with the Steadicam.",
+      "features": [
+        "Clapper loader skills and techniques",
+        "Camera prep, maintenance, and troubleshooting",
+        "Professional set protocols and procedures",
+        "Additional day assisting with Steadicam operations",
+        "Industry standards and camera department workflow"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    }
+  },
+  "combos": {
+    "steadicam-gimbal-combo": {
+      "id": "steadicam-gimbal-combo",
+      "name": "Steadicam + Gimbal Combo",
+      "price": 72000,
+      "regularPrice": 90000,
+      "discount": 20,
+      "description": "Save $180 by registering for both Sunday workshops",
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "full-weekend": {
+      "id": "full-weekend",
+      "name": "Camera Op + Steadicam + Gimbal",
+      "price": 120500,
+      "regularPrice": 135000,
+      "discount": 11,
+      "description": "Save $145 by registering for the full weekend",
+      "stripePaymentLink": "",
+      "active": true
+    }
+  },
+  "settings": {
+    "nextWorkshopDate": "November 15 & 16, 2025",
+    "specialOffer": "25% OFF ALL WORKSHOPS",
+    "freeBonus": "FREE Music Video Workshop included ($150 value)",
+    "musicVideoWorkshop": {
+      "name": "Music Video Workshop",
+      "date": "Saturday Night, 6PM-8PM",
+      "price": 15000,
+      "freeWithRegistration": true
+    }
+  }
+}
+

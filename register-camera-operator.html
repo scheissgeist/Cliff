@@ -51,11 +51,15 @@
                     <strong style="color: #dc2626;">FREE BONUS:</strong> Music Video Workshop included (Saturday 6-8pm, $150 value)
                 </div>
 
-                <a href="https://www.filmcrewworkshop.com/all-workshops.html" class="cta-button" target="_blank" style="display: block; text-align: center; margin-bottom: 1rem;">COMPLETE REGISTRATION</a>
+                <button onclick="redirectToPaymentLink('camera-operator')" class="cta-button" style="display: block; width: 100%; text-align: center; margin-bottom: 1rem; cursor: pointer; border: none; font-family: inherit; font-size: inherit;">COMPLETE REGISTRATION</button>
+                <a href="pricing.html" style="display: block; text-align: center; color: #999; text-decoration: underline; margin-bottom: 0.5rem;">← View All Workshops</a>
                 <a href="index.html" style="display: block; text-align: center; color: #999; text-decoration: underline;">← Back to Home</a>
             </div>
         </div>
     </section>
+    <script src="load-workshop-data.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="checkout.js"></script>
 </body>
 </html>
 

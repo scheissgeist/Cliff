@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #dc2626;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        .auth-section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 2px solid #dc2626;
+        }
+        .admin-section {
+            display: none;
+        }
+        .admin-section.active {
+            display: block;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            background: #000;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+        button {
+            background: #dc2626;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        button:hover {
+            background: #b91c1c;
+        }
+        button.secondary {
+            background: #333;
+        }
+        button.secondary:hover {
+            background: #444;
+        }
+        .workshop-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid #333;
+        }
+        .workshop-card h2 {
+            color: #dc2626;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .features-list {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .feature-item {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-item input {
+            flex: 1;
+            margin: 0;
+        }
+        .add-feature-btn {
+            background: #333;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        .status-message {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .status-message.success {
+            background: #065f46;
+            color: #d1fae5;
+            border: 1px solid #10b981;
+            display: block;
+        }
+        .status-message.error {
+            background: #7f1d1d;
+            color: #fecaca;
+            border: 1px solid #ef4444;
+            display: block;
+        }
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #333;
+        }
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+        .tab.active {
+            color: #dc2626;
+            border-bottom-color: #dc2626;
+        }
+        .price-display {
+            font-size: 1.5rem;
+            color: #dc2626;
+            font-weight: 700;
+        }
+        .toggle-active {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #333;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .toggle-switch.active {
+            background: #dc2626;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.2s;
+        }
+        .toggle-switch.active::after {
+            left: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Workshop Admin Panel</h1>
+        
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-section">
+            <h2>Login</h2>
+            <label for="adminPassword">Password:</label>
+            <input type="password" id="adminPassword" placeholder="Enter admin password">
+            <button onclick="login()">Login</button>
+            <div id="authMessage" class="status-message"></div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="admin-section">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('workshops')">Workshops</button>
+                <button class="tab" onclick="showTab('combos')">Combo Packages</button>
+                <button class="tab" onclick="showTab('settings')">Settings</button>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+
+            <!-- Workshops Tab -->
+            <div id="workshopsTab" class="tab-content">
+                <div id="workshopsList"></div>
+            </div>
+
+            <!-- Combos Tab -->
+            <div id="combosTab" class="tab-content" style="display: none;">
+                <div id="combosList"></div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settingsTab" class="tab-content" style="display: none;">
+                <div class="workshop-card">
+                    <h2>General Settings</h2>
+                    <label for="nextWorkshopDate">Next Workshop Date:</label>
+                    <input type="text" id="nextWorkshopDate" placeholder="November 15 & 16, 2025">
+                    
+                    <label for="specialOffer">Special Offer Text:</label>
+                    <input type="text" id="specialOffer" placeholder="25% OFF ALL WORKSHOPS">
+                    
+                    <label for="freeBonus">Free Bonus Text:</label>
+                    <input type="text" id="freeBonus" placeholder="FREE Music Video Workshop included ($150 value)">
+                    
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: #dc2626;">Music Video Workshop</h3>
+                    <label for="musicVideoName">Name:</label>
+                    <input type="text" id="musicVideoName" placeholder="Music Video Workshop">
+                    
+                    <label for="musicVideoDate">Date/Time:</label>
+                    <input type="text" id="musicVideoDate" placeholder="Saturday Night, 6PM-8PM">
+                    
+                    <label for="musicVideoPrice">Price (in cents):</label>
+                    <input type="number" id="musicVideoPrice" placeholder="15000">
+                    
+                    <button onclick="saveSettings()">Save Settings</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #333;">
+                <button onclick="saveAll()" style="background: #10b981;">Save All Changes</button>
+                <button onclick="loadConfig()" class="secondary">Reload Config</button>
+                <button onclick="logout()" class="secondary">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
+

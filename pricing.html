@@ -123,7 +123,7 @@
                 </div>
 
                 <!-- Music Video -->
-                <div class="workshop-card bonus">
+                <div class="workshop-card bonus" id="music-video">
                     <div class="bonus-badge">FREE BONUS</div>
                     <img src="https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-2168_orig.jpg" alt="Music Video">
                     <div style="padding: 2rem;">
@@ -138,7 +138,7 @@
                         <div style="border-top: 2px solid #dc2626; padding-top: 1.5rem;">
                             <div style="font-size: 2rem; font-weight: 900; color: #00ff00; margin-bottom: 0.5rem;">FREE</div>
                             <div style="color: #999; font-size: 0.9rem; margin-bottom: 1.5rem;">$150 value - Included with any workshop registration</div>
-                            <a href="register-camera-operator.html" class="cta-button" style="display: block; text-align: center;">REGISTER</a>
+                            <div style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">Automatically included when you register for any workshop above!</div>
                         </div>
                     </div>
                 </div>
@@ -193,14 +193,14 @@
                         <p style="color: #ccc; margin-bottom: 1.5rem;">Save $180 by registering for both Sunday workshops</p>
                         <div style="font-size: 2.5rem; font-weight: 900; color: #dc2626;">$720</div>
                         <div style="color: #999; margin-bottom: 1.5rem;">Regular Price: $900</div>
-                        <a href="https://www.filmcrewworkshop.com/all-workshops.html" class="cta-button" target="_blank">REGISTER FOR COMBO</a>
+                        <button onclick="redirectToPaymentLink('steadicam-gimbal-combo')" class="cta-button" style="cursor: pointer; border: none; font-family: inherit; font-size: inherit;">REGISTER FOR COMBO</button>
                     </div>
                     <div style="padding: 2rem; background: #000; border: 1px solid rgba(255,255,255,0.1);">
                         <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #dc2626;">CAMERA OP + STEADICAM + GIMBAL</h3>
                         <p style="color: #ccc; margin-bottom: 1.5rem;">Save $145 by registering for the full weekend</p>
                         <div style="font-size: 2.5rem; font-weight: 900; color: #dc2626;">$1,205</div>
                         <div style="color: #999; margin-bottom: 1.5rem;">Regular Price: $1,350</div>
-                        <a href="https://www.filmcrewworkshop.com/all-workshops.html" class="cta-button" target="_blank">REGISTER FOR COMBO</a>
+                        <button onclick="redirectToPaymentLink('full-weekend')" class="cta-button" style="cursor: pointer; border: none; font-family: inherit; font-size: inherit;">REGISTER FOR COMBO</button>
                     </div>
                 </div>
             </div>
@@ -215,7 +215,8 @@
             <p style="color: #999; font-size: 0.9rem;">Vancouver, BC • 20+ Years Experience • Professional ARRI & RED Equipment</p>
         </div>
     </footer>
-
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="checkout.js"></script>
 </body>
 </html>
 
