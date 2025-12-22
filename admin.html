@@ -205,6 +205,7 @@
             <div class="tabs">
                 <button class="tab active" onclick="showTab('workshops')">Workshops</button>
                 <button class="tab" onclick="showTab('combos')">Combo Packages</button>
+                <button class="tab" onclick="showTab('registrations')">Registrations</button>
                 <button class="tab" onclick="showTab('settings')">Settings</button>
             </div>
 
@@ -218,6 +219,27 @@
             <!-- Combos Tab -->
             <div id="combosTab" class="tab-content" style="display: none;">
                 <div id="combosList"></div>
+            </div>
+
+            <!-- Registrations Tab -->
+            <div id="registrationsTab" class="tab-content" style="display: none;">
+                <div class="workshop-card">
+                    <h2>Workshop Registrations</h2>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                        <button onclick="loadRegistrations()" class="secondary">Refresh List</button>
+                        <button onclick="exportAttendanceList()">Export Attendance List</button>
+                        <button onclick="exportAllRegistrations()">Export All Data (CSV)</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <label>Filter by Workshop:</label>
+                        <select id="workshopFilter" onchange="filterRegistrations()" style="padding: 0.5rem; background: #000; border: 1px solid #333; color: #fff; border-radius: 4px;">
+                            <option value="all">All Workshops</option>
+                        </select>
+                    </div>
+                    
+                    <div id="registrationsList" style="margin-top: 2rem;"></div>
+                </div>
             </div>
 
             <!-- Settings Tab -->

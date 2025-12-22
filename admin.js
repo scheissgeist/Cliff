@@ -4,6 +4,7 @@
 const ADMIN_PASSWORD = 'cliff2025'; // Change this to a secure password
 let workshopConfig = null;
 let currentTab = 'workshops';
+let allRegistrations = [];
 
 // Check if user is logged in
 function checkAuth() {
@@ -48,6 +49,7 @@ async function loadConfig() {
         renderWorkshops();
         renderCombos();
         renderSettings();
+        populateWorkshopFilter();
     } catch (error) {
         console.error('Error loading config:', error);
         showMessage('Error loading configuration', 'error');
@@ -231,6 +233,11 @@ function showTab(tabName) {
     
     event.target.classList.add('active');
     document.getElementById(`${tabName}Tab`).style.display = 'block';
+    
+    // Load registrations when registrations tab is opened
+    if (tabName === 'registrations') {
+        loadRegistrations();
+    }
 }
 
 // Save all changes
@@ -338,4 +345,307 @@ function showMessage(message, type) {
 
 // Initialize on load
 checkAuth();
+
+// ==================== REGISTRATION MANAGEMENT ====================
+
+// Load registrations
+async function loadRegistrations() {
+    try {
+        const response = await fetch('/api/save-registration.php');
+        const data = await response.json();
+        allRegistrations = data.registrations || [];
+        renderRegistrations(allRegistrations);
+        showMessage(`Loaded ${allRegistrations.length} registrations`, 'success');
+    } catch (error) {
+        console.error('Error loading registrations:', error);
+        // Try localStorage fallback
+        allRegistrations = JSON.parse(localStorage.getItem('pendingRegistrations') || '[]');
+        renderRegistrations(allRegistrations);
+        if (allRegistrations.length > 0) {
+            showMessage(`Loaded ${allRegistrations.length} registrations from local storage`, 'success');
+        } else {
+            showMessage('No registrations found', 'error');
+        }
+    }
+}
+
+// Populate workshop filter dropdown
+function populateWorkshopFilter() {
+    const filter = document.getElementById('workshopFilter');
+    if (!filter || !workshopConfig) return;
+    
+    filter.innerHTML = '<option value="all">All Workshops</option>';
+    Object.values(workshopConfig.workshops).forEach(workshop => {
+        const option = document.createElement('option');
+        option.value = workshop.id;
+        option.textContent = workshop.name;
+        filter.appendChild(option);
+    });
+}
+
+// Filter registrations
+function filterRegistrations() {
+    const filter = document.getElementById('workshopFilter').value;
+    if (filter === 'all') {
+        renderRegistrations(allRegistrations);
+    } else {
+        const filtered = allRegistrations.filter(reg => reg.workshopId === filter);
+        renderRegistrations(filtered);
+    }
+}
+
+// Render registrations list
+function renderRegistrations(registrations) {
+    const container = document.getElementById('registrationsList');
+    if (!container) return;
+    
+    if (registrations.length === 0) {
+        container.innerHTML = '<p style="color: #999; text-align: center; padding: 2rem;">No registrations found.</p>';
+        return;
+    }
+    
+    // Sort by date (newest first)
+    const sorted = [...registrations].sort((a, b) => 
+        new Date(b.registrationDate) - new Date(a.registrationDate)
+    );
+    
+    container.innerHTML = sorted.map(reg => {
+        const date = new Date(reg.registrationDate);
+        const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+        
+        return `
+            <div style="background: #000; border: 1px solid #333; border-radius: 4px; padding: 1.5rem; margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="color: #dc2626; margin-bottom: 0.5rem;">${reg.customerName}</h3>
+                        <div style="color: #999; font-size: 0.9rem;">${reg.customerEmail} | ${reg.customerPhone}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="background: ${reg.paymentStatus === 'paid' ? '#10b981' : '#f59e0b'}; 
+                                     color: #000; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">
+                            ${reg.paymentStatus.toUpperCase()}
+                        </span>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <div style="color: #666; font-size: 0.85rem;">Workshop</div>
+                        <div style="color: #fff;">${reg.workshopName || reg.workshopId}</div>
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 0.85rem;">Workshop Date</div>
+                        <div style="color: #fff;">${reg.workshopDate || 'TBD'}</div>
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 0.85rem;">Price</div>
+                        <div style="color: #fff;">$${reg.workshopPrice || '0.00'}</div>
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 0.85rem;">Registered</div>
+                        <div style="color: #fff;">${formattedDate}</div>
+                    </div>
+                </div>
+                
+                ${reg.experienceLevel ? `
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="color: #666; font-size: 0.85rem;">Experience:</span>
+                        <span style="color: #fff; margin-left: 0.5rem;">${formatExperienceLevel(reg.experienceLevel)}</span>
+                    </div>
+                ` : ''}
+                
+                ${reg.notes ? `
+                    <div style="margin-bottom: 1rem;">
+                        <div style="color: #666; font-size: 0.85rem; margin-bottom: 0.25rem;">Notes:</div>
+                        <div style="color: #ccc; padding: 0.5rem; background: #1a1a1a; border-radius: 4px;">${reg.notes}</div>
+                    </div>
+                ` : ''}
+                
+                <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                    ${reg.paymentStatus !== 'paid' ? `
+                        <button onclick="markAsPaid('${reg.id}')" style="background: #10b981; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            Mark as Paid
+                        </button>
+                    ` : ''}
+                    <button onclick="toggleAttendance('${reg.id}')" 
+                        style="background: ${reg.attended ? '#dc2626' : '#333'}; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                        ${reg.attended ? '✓ Attended' : 'Mark Attended'}
+                    </button>
+                    <button onclick="deleteRegistration('${reg.id}')" 
+                        style="background: #7f1d1d; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Format experience level
+function formatExperienceLevel(level) {
+    const levels = {
+        'beginner': 'Beginner - No experience',
+        'some': 'Some Experience - Hobbyist/Student',
+        'intermediate': 'Intermediate - Some paid work',
+        'advanced': 'Advanced - Industry professional'
+    };
+    return levels[level] || level;
+}
+
+// Mark registration as paid
+async function markAsPaid(registrationId) {
+    const reg = allRegistrations.find(r => r.id === registrationId);
+    if (reg) {
+        reg.paymentStatus = 'paid';
+        await updateRegistration(reg);
+    }
+}
+
+// Toggle attendance
+async function toggleAttendance(registrationId) {
+    const reg = allRegistrations.find(r => r.id === registrationId);
+    if (reg) {
+        reg.attended = !reg.attended;
+        await updateRegistration(reg);
+    }
+}
+
+// Update registration
+async function updateRegistration(registration) {
+    try {
+        // For now, we'll just re-save all registrations
+        // In a real backend, you'd have an UPDATE endpoint
+        const response = await fetch('/api/save-registration.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ registrations: allRegistrations })
+        });
+        
+        if (response.ok) {
+            filterRegistrations();
+            showMessage('Registration updated', 'success');
+        }
+    } catch (error) {
+        console.error('Error updating registration:', error);
+        localStorage.setItem('pendingRegistrations', JSON.stringify(allRegistrations));
+        filterRegistrations();
+        showMessage('Registration updated locally', 'success');
+    }
+}
+
+// Delete registration
+async function deleteRegistration(registrationId) {
+    if (!confirm('Are you sure you want to delete this registration?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/save-registration.php?id=${registrationId}`, {
+            method: 'DELETE'
+        });
+        
+        if (response.ok) {
+            allRegistrations = allRegistrations.filter(r => r.id !== registrationId);
+            filterRegistrations();
+            showMessage('Registration deleted', 'success');
+        }
+    } catch (error) {
+        console.error('Error deleting registration:', error);
+        allRegistrations = allRegistrations.filter(r => r.id !== registrationId);
+        localStorage.setItem('pendingRegistrations', JSON.stringify(allRegistrations));
+        filterRegistrations();
+        showMessage('Registration deleted locally', 'success');
+    }
+}
+
+// Export attendance list
+function exportAttendanceList() {
+    const filter = document.getElementById('workshopFilter').value;
+    let regsToExport = filter === 'all' ? allRegistrations : 
+                       allRegistrations.filter(reg => reg.workshopId === filter);
+    
+    // Filter only paid registrations
+    regsToExport = regsToExport.filter(reg => reg.paymentStatus === 'paid');
+    
+    if (regsToExport.length === 0) {
+        alert('No paid registrations to export.');
+        return;
+    }
+    
+    // Group by workshop
+    const grouped = {};
+    regsToExport.forEach(reg => {
+        const workshopName = reg.workshopName || reg.workshopId;
+        if (!grouped[workshopName]) {
+            grouped[workshopName] = [];
+        }
+        grouped[workshopName].push(reg);
+    });
+    
+    // Create text content
+    let content = '=== WORKSHOP ATTENDANCE LIST ===\n';
+    content += `Generated: ${new Date().toLocaleString()}\n\n`;
+    
+    Object.keys(grouped).forEach(workshopName => {
+        const regs = grouped[workshopName];
+        content += `\n--- ${workshopName.toUpperCase()} ---\n`;
+        content += `Date: ${regs[0].workshopDate || 'TBD'}\n`;
+        content += `Total Attendees: ${regs.length}\n\n`;
+        
+        regs.forEach((reg, index) => {
+            content += `${index + 1}. ${reg.customerName}\n`;
+            content += `   Email: ${reg.customerEmail}\n`;
+            content += `   Phone: ${reg.customerPhone}\n`;
+            if (reg.experienceLevel) {
+                content += `   Experience: ${formatExperienceLevel(reg.experienceLevel)}\n`;
+            }
+            content += `   Attended: ${reg.attended ? 'YES' : 'NO'}\n\n`;
+        });
+    });
+    
+    // Download
+    downloadFile('attendance-list.txt', content);
+    showMessage('Attendance list exported', 'success');
+}
+
+// Export all registrations as CSV
+function exportAllRegistrations() {
+    if (allRegistrations.length === 0) {
+        alert('No registrations to export.');
+        return;
+    }
+    
+    // CSV headers
+    let csv = 'Name,Email,Phone,Workshop,Workshop Date,Price,Experience Level,Payment Status,Attended,Registration Date,Notes\n';
+    
+    // Add rows
+    allRegistrations.forEach(reg => {
+        csv += `"${reg.customerName}",`;
+        csv += `"${reg.customerEmail}",`;
+        csv += `"${reg.customerPhone}",`;
+        csv += `"${reg.workshopName || reg.workshopId}",`;
+        csv += `"${reg.workshopDate || 'TBD'}",`;
+        csv += `"$${reg.workshopPrice || '0.00'}",`;
+        csv += `"${formatExperienceLevel(reg.experienceLevel || '')}",`;
+        csv += `"${reg.paymentStatus}",`;
+        csv += `"${reg.attended ? 'Yes' : 'No'}",`;
+        csv += `"${new Date(reg.registrationDate).toLocaleString()}",`;
+        csv += `"${(reg.notes || '').replace(/"/g, '""')}"\n`;
+    });
+    
+    downloadFile('registrations.csv', csv);
+    showMessage('CSV exported', 'success');
+}
+
+// Download file helper
+function downloadFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
 

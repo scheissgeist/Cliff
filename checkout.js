@@ -92,7 +92,10 @@ async function redirectToPaymentLink(workshopId) {
     }
     
     if (workshop.stripePaymentLink && workshop.stripePaymentLink.trim() !== '') {
-        window.location.href = workshop.stripePaymentLink;
+        // Add workshop info to URL for tracking
+        const url = new URL(workshop.stripePaymentLink);
+        url.searchParams.append('client_reference_id', workshopId);
+        window.location.href = url.toString();
     } else {
         // Show helpful message when payment link not set up yet
         alert('Registration is not yet available for this workshop.\n\nThe workshop organizer needs to configure the payment system.\n\nPlease check back soon or contact us for more information.');
@@ -100,7 +103,8 @@ async function redirectToPaymentLink(workshopId) {
     }
 }
 
-// Export for use in HTML
+// Export functions
 window.createCheckoutSession = createCheckoutSession;
 window.redirectToPaymentLink = redirectToPaymentLink;
+window.getWorkshop = getWorkshop;
 
