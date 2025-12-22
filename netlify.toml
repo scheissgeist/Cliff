@@ -1,0 +1,18 @@
+{
+  "build": {
+    "functions": "netlify/functions"
+  },
+  "redirects": [
+    {
+      "from": "/api/save-registration.php",
+      "to": "/.netlify/functions/save-registration",
+      "status": 200
+    },
+    {
+      "from": "/api/save-config.php",
+      "to": "/.netlify/functions/save-config",
+      "status": 200
+    }
+  ]
+}
+
