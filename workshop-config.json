@@ -8,8 +8,8 @@
       "price": 45000,
       "regularPrice": 60000,
       "discount": 25,
-      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/whatsapp-image-2024-05-31-at-9-23-49-am_orig.jpeg",
-      "description": "Learn to become a Camera Operator skills tips blocking to operating the camera. Hand Held/Dolly/Sliders/Jib Arm and Wheel Remote Heads will be learned.",
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-8903-orig_orig.jpeg",
+      "description": "Learn Camera Operator skills, tips, and blocking techniques for operating the camera. Hand Held/Dolly/Sliders/Jib Arm and Wheel Remote Heads will be covered.",
       "features": [
         "Hand held, dolly, sliders, and jib arm operating",
         "Remote head camera control",
@@ -28,7 +28,7 @@
       "price": 45000,
       "regularPrice": 60000,
       "discount": 25,
-      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-2142_1_orig.jpg",
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-3485-orig_orig.jpeg",
       "description": "Learn to operate, build and balance a Steadicam. Learn specialized skills, tips and more from an experienced professional, as well as valuable hands-on experience.",
       "features": [
         "Operate, build, and balance professional Steadicam rigs",
@@ -68,7 +68,7 @@
       "price": 60000,
       "regularPrice": 80000,
       "discount": 25,
-      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-5267_orig.jpg",
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-3439-orig_orig.jpeg",
       "description": "Learn to become a 1st Camera Assistant (focus pulling skills). Learn about lenses and the workings of the camera department on Saturday with additional assisting with Steadicam on Sunday.",
       "features": [
         "Focus pulling mastery and professional techniques",
@@ -88,7 +88,7 @@
       "price": 60000,
       "regularPrice": 80000,
       "discount": 25,
-      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/whatsapp-image-2024-05-31-at-9-23-54-am_orig.jpeg",
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/img-2140_orig.jpeg",
       "description": "Learn to become a 2nd Camera Assistant (clapper loader). Learn about lenses and the workings of the camera department on Saturday with an additional day assisting with the Steadicam.",
       "features": [
         "Clapper loader skills and techniques",
@@ -96,6 +96,46 @@
         "Professional set protocols and procedures",
         "Additional day assisting with Steadicam operations",
         "Industry standards and camera department workflow"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "car-mounts": {
+      "id": "car-mounts",
+      "name": "Car Mounts and Rigs Workshop",
+      "date": "TBD",
+      "time": "1 Hour",
+      "price": 10000,
+      "regularPrice": 10000,
+      "discount": 0,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/lince-camera-car-mount-2_orig.png",
+      "description": "Poor Man's Process techniques for vehicle shots. Learn professional car mounting and rigging.",
+      "features": [
+        "Poor Man's Process techniques for vehicle shots",
+        "Professional car mounting systems and rigging",
+        "Camera placement and angle techniques",
+        "Safety protocols for vehicle camera work",
+        "Industry-standard rigging equipment"
+      ],
+      "stripePaymentLink": "",
+      "active": true
+    },
+    "phone-cameras": {
+      "id": "phone-cameras",
+      "name": "Phone Cameras Workshop",
+      "date": "TBD",
+      "time": "1 Hour",
+      "price": 10000,
+      "regularPrice": 10000,
+      "discount": 0,
+      "image": "https://www.filmcrewworkshop.com/uploads/1/1/4/1/114111487/722288522-max_orig.jpeg",
+      "description": "Professional lighting techniques for phone cameras. Master mobile filmmaking for podcasts and short films.",
+      "features": [
+        "Professional lighting techniques for phone cameras",
+        "Camera operating and movement for mobile filmmaking",
+        "Essential techniques for podcasts and short films",
+        "Pro mobile filmmaking workflow and best practices",
+        "Maximize your phone's camera capabilities"
       ],
       "stripePaymentLink": "",
       "active": true
