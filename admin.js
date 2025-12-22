@@ -86,7 +86,8 @@ function renderSettings() {
     if (settings.musicVideoWorkshop) {
         document.getElementById('musicVideoName').value = settings.musicVideoWorkshop.name || '';
         document.getElementById('musicVideoDate').value = settings.musicVideoWorkshop.date || '';
-        document.getElementById('musicVideoPrice').value = settings.musicVideoWorkshop.price || '';
+        // Convert cents to dollars for display
+        document.getElementById('musicVideoPrice').value = (settings.musicVideoWorkshop.price / 100).toFixed(2) || '';
     }
 }
 
@@ -110,12 +111,12 @@ function createWorkshopCard(workshop) {
         
         <div class="form-row">
             <div>
-                <label>Price (in cents, e.g., 45000 = $450):</label>
-                <input type="number" id="${workshop.id}-price" value="${workshop.price || ''}">
+                <label>Price (in dollars, e.g., 450 or 450.00):</label>
+                <input type="number" step="0.01" id="${workshop.id}-price" value="${(workshop.price / 100).toFixed(2)}">
             </div>
             <div>
-                <label>Regular Price (in cents):</label>
-                <input type="number" id="${workshop.id}-regularPrice" value="${workshop.regularPrice || ''}">
+                <label>Regular Price (in dollars):</label>
+                <input type="number" step="0.01" id="${workshop.id}-regularPrice" value="${(workshop.regularPrice / 100).toFixed(2)}">
             </div>
         </div>
         
@@ -164,12 +165,12 @@ function createComboCard(combo) {
         
         <div class="form-row">
             <div>
-                <label>Price (in cents):</label>
-                <input type="number" id="${combo.id}-price" value="${combo.price || ''}">
+                <label>Price (in dollars, e.g., 720 or 720.00):</label>
+                <input type="number" step="0.01" id="${combo.id}-price" value="${(combo.price / 100).toFixed(2)}">
             </div>
             <div>
-                <label>Regular Price (in cents):</label>
-                <input type="number" id="${combo.id}-regularPrice" value="${combo.regularPrice || ''}">
+                <label>Regular Price (in dollars):</label>
+                <input type="number" step="0.01" id="${combo.id}-regularPrice" value="${(combo.regularPrice / 100).toFixed(2)}">
             </div>
         </div>
         
@@ -239,8 +240,9 @@ async function saveAll() {
         const workshop = workshopConfig.workshops[workshopId];
         workshop.date = document.getElementById(`${workshopId}-date`)?.value || '';
         workshop.time = document.getElementById(`${workshopId}-time`)?.value || '';
-        workshop.price = parseInt(document.getElementById(`${workshopId}-price`)?.value) || 0;
-        workshop.regularPrice = parseInt(document.getElementById(`${workshopId}-regularPrice`)?.value) || 0;
+        // Convert dollars to cents for storage
+        workshop.price = Math.round(parseFloat(document.getElementById(`${workshopId}-price`)?.value) * 100) || 0;
+        workshop.regularPrice = Math.round(parseFloat(document.getElementById(`${workshopId}-regularPrice`)?.value) * 100) || 0;
         workshop.discount = parseInt(document.getElementById(`${workshopId}-discount`)?.value) || 0;
         workshop.image = document.getElementById(`${workshopId}-image`)?.value || '';
         workshop.description = document.getElementById(`${workshopId}-description`)?.value || '';
@@ -260,8 +262,9 @@ async function saveAll() {
     // Update combos
     Object.keys(workshopConfig.combos).forEach(comboId => {
         const combo = workshopConfig.combos[comboId];
-        combo.price = parseInt(document.getElementById(`${comboId}-price`)?.value) || 0;
-        combo.regularPrice = parseInt(document.getElementById(`${comboId}-regularPrice`)?.value) || 0;
+        // Convert dollars to cents for storage
+        combo.price = Math.round(parseFloat(document.getElementById(`${comboId}-price`)?.value) * 100) || 0;
+        combo.regularPrice = Math.round(parseFloat(document.getElementById(`${comboId}-regularPrice`)?.value) * 100) || 0;
         combo.description = document.getElementById(`${comboId}-description`)?.value || '';
         combo.stripePaymentLink = document.getElementById(`${comboId}-stripeLink`)?.value || '';
         
@@ -284,7 +287,8 @@ async function saveSettings() {
     }
     workshopConfig.settings.musicVideoWorkshop.name = document.getElementById('musicVideoName').value;
     workshopConfig.settings.musicVideoWorkshop.date = document.getElementById('musicVideoDate').value;
-    workshopConfig.settings.musicVideoWorkshop.price = parseInt(document.getElementById('musicVideoPrice').value) || 0;
+    // Convert dollars to cents for storage
+    workshopConfig.settings.musicVideoWorkshop.price = Math.round(parseFloat(document.getElementById('musicVideoPrice').value) * 100) || 0;
     
     await saveConfig();
 }

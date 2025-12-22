@@ -14,8 +14,8 @@
 
 1. **Date** - e.g., "Saturday, November 15, 2025"
 2. **Time** - e.g., "8:30am - 5:00pm"
-3. **Price** - Enter in cents (45000 = $450.00)
-4. **Regular Price** - Enter in cents (60000 = $600.00)
+3. **Price** - Enter in dollars (450 or 450.00 = $450.00)
+4. **Regular Price** - Enter in dollars (600 or 600.00 = $600.00)
 5. **Discount Percentage** - e.g., 25 (for 25% off)
 6. **Image URL** - The hero image for the workshop
 7. **Description** - The main paragraph describing the workshop
@@ -85,10 +85,11 @@ For combos, you can change:
 
 ## Important Notes
 
-### Prices are in CENTS
-- $450 = enter **45000**
-- $600 = enter **60000**
-- $100 = enter **10000**
+### Prices are in DOLLARS
+- $450 = enter **450** or **450.00**
+- $600 = enter **600** or **600.00**
+- $100 = enter **100** or **100.00**
+- The system automatically handles cents
 
 ### Stripe Payment Links
 - Leave blank until you set up Stripe
@@ -122,8 +123,8 @@ New: Saturday, March 20, 2026
 
 ### Change Price
 ```
-Old: 45000 (shows as $450)
-New: 55000 (shows as $550)
+Old: 450 (shows as $450)
+New: 550 (shows as $550)
 ```
 
 ### Change Description
